@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="todo.css">
+</head>
+
+<body>
+
+    <div class="form">
+        <input type="text" id="todo" placeholder="enter your data">
+        <br><br>
+        <button onclick="clickMe()">click me</button>
+    </div>
+    <div class="data"></div>
+
+
+    <script>
+
+        let data = document.querySelector(".data")
+
+        function clickMe() {
+
+            let a = document.getElementById("todo").value
+
+            if (a == "") {
+
+                alert("please enter your data")
+            }
+            else {
+
+                let li = document.createElement("li")
+                li.append(a)
+
+                let button = document.createElement("button")
+                let input = button.textContent = ("delete")
+
+                button.addEventListener('click', () => {
+
+                    li.remove()
+                })
+
+                let editbtn = document.createElement("button")
+                editbtn.textContent = "edit"
+
+                editbtn.addEventListener('click', () => {
+
+                    let newtask = prompt("edit your data", input.textContent)
+                    if (newtask) {
+                        input.textContent = newtask;
+                    }
+
+                })
+
+                li.append(input)
+                li.append(editbtn)
+
+                li.append(button)
+                data.append(li)
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
